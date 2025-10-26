@@ -1,0 +1,992 @@
+<!doctype html>
+<!-- impeldown.dev -->
+<html lang="en" data-createdby="impeldown.dev">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>NexusFlow – Streamline Your Workflow, Amplify Your Results</title>
+    <meta name="description" content="NexusFlow is an AI-powered project management platform with automated task allocation, real-time collaboration, and predictive analytics.">
+    <meta name="keywords" content="NexusFlow, project management, AI, collaboration, analytics, SaaS">
+    <link rel="canonical" href="https://example.com/">
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#4361ee">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NexusFlow – Streamline Your Workflow, Amplify Your Results">
+    <meta property="og:description" content="AI-powered project management that adapts to your team's workflow and predicts bottlenecks before they happen.">
+    <meta property="og:url" content="https://example.com/">
+    <!-- Minimal inline SVG preview encoded as data URI for single-file delivery -->
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%234361ee'/%3E%3Cstop offset='1' stop-color='%233a0ca3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='1200' height='630'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='64' font-family='Inter, Arial, sans-serif' dominant-baseline='middle' text-anchor='middle'%3ENexusFlow%3C/text%3E%3C/svg%3E">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NexusFlow – Streamline Your Workflow, Amplify Your Results">
+    <meta name="twitter:description" content="AI-powered project management that adapts to your team's workflow and predicts bottlenecks before they happen.">
+    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%234361ee'/%3E%3Cstop offset='1' stop-color='%233a0ca3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill='url(%23g)' width='1200' height='630'/%3E%3Ctext x='50%25' y='50%25' fill='white' font-size='64' font-family='Inter, Arial, sans-serif' dominant-baseline='middle' text-anchor='middle'%3ENexusFlow%3C/text%3E%3C/svg%3E">
+
+    <!-- Favicon (inline SVG) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='lg' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%234361ee'/%3E%3Cstop offset='1' stop-color='%233a0ca3'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23lg)'/%3E%3Cpath d='M18 40c6-10 12-16 22-22' stroke='%234cc9f0' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='24' r='5' fill='white'/%3E%3C/svg%3E">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        /* Colors */
+        --color-primary: #4361ee;
+        --color-secondary: #3a0ca3;
+        --color-accent: #4cc9f0;
+        --color-neutral: #f8f9fa;
+        --color-dark: #212529;
+        --color-white: #ffffff;
+        --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+
+        /* Typography */
+        --font-sans: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+        --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+        /* Layout */
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 20px;
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.08);
+        --shadow-md: 0 6px 18px rgba(0,0,0,0.08);
+        --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
+        --container-max: 1200px;
+        --header-h: 72px;
+        --gutter: clamp(16px, 3vw, 32px);
+
+        /* Z-index */
+        --z-header: 1000;
+        --z-backdrop: 900;
+        --z-watermark: 800;
+
+        /* Transitions */
+        --ease: cubic-bezier(.4,0,.2,1);
+        --ts: 220ms var(--ease);
+      }
+
+      /* Global Reset & Base */
+      *, *::before, *::after { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        color: var(--color-dark);
+        background: var(--color-white);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      img, svg { display: block; max-width: 100%; }
+      a { color: inherit; text-decoration: none; }
+      button { font: inherit; }
+      :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; }
+
+      /* Skip link */
+      .skip-link { position: absolute; left: -9999px; top: 0; background: var(--color-accent); color: #003244; padding: 10px 14px; border-radius: 8px; }
+      .skip-link:focus { left: 12px; top: 12px; z-index: var(--z-header); }
+
+      /* Layout utilities */
+      .container { width: min(100% - 2*var(--gutter), var(--container-max)); margin-inline: auto; }
+      section { scroll-margin-top: calc(var(--header-h) + 16px); }
+      .muted { color: #6c757d; }
+      .badge { display: inline-block; padding: 4px 10px; border-radius: 999px; background: rgba(76, 201, 240, 0.15); color: var(--color-secondary); font-weight: 600; font-size: 12px; letter-spacing: .3px; }
+
+      /* Header */
+      header.site-header {
+        position: sticky; top: 0; height: var(--header-h);
+        backdrop-filter: saturate(180%) blur(10px);
+        background: color-mix(in srgb, var(--color-white) 76%, transparent);
+        border-bottom: 1px solid rgba(33, 37, 41, 0.06);
+        z-index: var(--z-header);
+      }
+      .nav-wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 16px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+      .brand svg { width: 28px; height: 28px; }
+      nav.primary-nav { display: none; align-items: center; gap: 20px; }
+      nav.primary-nav a { padding: 8px 10px; border-radius: 8px; }
+      nav.primary-nav a:hover { background: rgba(67,97,238,0.08); }
+      .cta-group { display: none; align-items: center; gap: 10px; }
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; transition: transform var(--ts), box-shadow var(--ts), background var(--ts), border-color var(--ts); cursor: pointer; }
+      .btn:active { transform: translateY(1px); }
+      .btn-primary { background: var(--color-primary); color: var(--color-white); box-shadow: var(--shadow-sm); }
+      .btn-primary:hover { background: color-mix(in srgb, var(--color-primary) 88%, white); box-shadow: var(--shadow-md); }
+      .btn-secondary { background: transparent; color: var(--color-secondary); border-color: rgba(58,12,163,0.25); }
+      .btn-secondary:hover { background: rgba(58,12,163,0.06); }
+      .hamburger { display: inline-flex; width: 40px; height: 40px; align-items: center; justify-content: center; border-radius: 10px; border: 1px solid rgba(33,37,41,.1); background: #fff; }
+      .hamburger svg { width: 22px; height: 22px; }
+
+      /* Mobile menu */
+      .mobile-panel { position: fixed; inset: calc(var(--header-h)) 0 auto 0; background: #fff; border-bottom: 1px solid rgba(33,37,41,.08); box-shadow: var(--shadow-md); transform-origin: top; transform: scaleY(0.98); opacity: 0; pointer-events: none; transition: opacity var(--ts), transform var(--ts); }
+      .mobile-panel.open { opacity: 1; transform: scaleY(1); pointer-events: auto; }
+      .mobile-panel .grid { display: grid; grid-template-columns: 1fr; padding: 16px; gap: 10px; }
+      .mobile-panel a { padding: 12px; border-radius: 10px; }
+      .mobile-panel a:hover { background: rgba(67,97,238,0.08); }
+      .mobile-panel .cta { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; padding: 12px 16px 18px; }
+      .backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.28); opacity: 0; pointer-events: none; transition: opacity var(--ts); z-index: var(--z-backdrop); }
+      .backdrop.open { opacity: 1; pointer-events: auto; }
+
+      /* Hero */
+      .hero { position: relative; background: var(--gradient-primary); color: var(--color-white); padding: 64px 0 40px; overflow: clip; }
+      .hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .16; background-image: linear-gradient(to right, rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,.12) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(100% 60% at 50% 0%, black, transparent 70%); }
+      .hero .container { display: grid; gap: 28px; align-items: center; }
+      .hero h1 { font-size: clamp(32px, 6vw, 60px); line-height: 1.05; margin: 6px 0 0; font-weight: 700; letter-spacing: -0.02em; }
+      .eyebrow { display: inline-flex; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.22); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-weight: 600; font-size: 12px; }
+      .gradient-text { background: linear-gradient(90deg, #e9efff, #b3c7ff, #e9efff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .hero p.sub { font-size: clamp(16px, 2.4vw, 20px); opacity: .92; margin: 10px 0 0; }
+      .hero .kfs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0 0; }
+      .hero .kf { display: inline-flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.12); padding: 10px 12px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+      .subpoints { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+      .pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); font-size: 12px; }
+      .hero .actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+      .stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; margin-top: 16px; }
+      .stat { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); border-radius: 12px; padding: 10px 12px; display: grid; gap: 2px; }
+      .stat small { opacity: .85; }
+      .hero-visual { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); padding: 14px; border-radius: var(--radius-lg); box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+      .dashboard { background: #0f1320; border-radius: 12px; padding: 12px; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06); position: relative; overflow: hidden; }
+      .titlebar { display: flex; align-items: center; justify-content: space-between; color: #cfd6ff; margin-bottom: 10px; }
+      .window-dots { display: inline-flex; gap: 6px; }
+      .wdot { width: 10px; height: 10px; border-radius: 50%; background: #2a2f45; }
+      .tabs { display: inline-flex; gap: 8px; background: #131936; border: 1px solid rgba(255,255,255,0.07); border-radius: 999px; padding: 4px; }
+      .tab { padding: 6px 10px; border-radius: 999px; font-size: 12px; color: #c9d1ff; }
+      .tab.active { background: #1b2247; color: #fff; }
+      .dash-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 12px; }
+      .card { background: #161b2e; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px; color: #dbe4ff; box-shadow: 0 6px 14px rgba(0,0,0,0.25); }
+      .chart { height: 120px; background: conic-gradient(from 90deg at 50% 50%, #4cc9f0, #a1dfff, #6ea8fe, #b197fc); border-radius: 10px; opacity: .9; }
+      .ring { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--color-accent) 0% 72%, rgba(255,255,255,.08) 72% 100%); display: grid; place-items: center; margin: 4px auto; animation: spin 10s linear infinite; }
+      .ring::after { content: "72%"; font-weight: 700; color: #e9ecef; background: #0f1320; padding: 8px 10px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.06); }
+      @keyframes spin { from { transform: rotate(0) } to { transform: rotate(360deg) } }
+      .list-row { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px; padding: 8px; border-radius: 8px; }
+      .list-row:hover { background: rgba(255,255,255,0.06); }
+      .dot { width: 10px; height: 10px; border-radius: 50%; background: #4cc9f0; box-shadow: 0 0 0 4px rgba(76,201,240,0.12); }
+      .shape { position: absolute; border-radius: 999px; filter: blur(10px); opacity: .45; animation: float 12s var(--ease) infinite; }
+      .shape.s1 { width: 200px; height: 200px; background: #4cc9f0; top: -40px; right: -40px; }
+      .shape.s2 { width: 220px; height: 220px; background: #3a0ca3; bottom: -60px; left: -60px; animation-delay: -3s; }
+      @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-18px) } }
+
+      /* Features */
+      .features { padding: 60px 0; background: var(--color-neutral); }
+      .features-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .feature-card { background: #fff; border: 1px solid rgba(33,37,41,0.08); border-radius: var(--radius-md); padding: 18px; box-shadow: var(--shadow-sm); transition: transform var(--ts), box-shadow var(--ts); }
+      .feature-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+      .icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(67,97,238,.1); color: var(--color-primary); }
+
+      /* Solutions */
+      .solutions { padding: 60px 0; }
+      .sol-tabs { display: inline-flex; gap: 6px; background: var(--color-neutral); border: 1px solid rgba(33,37,41,0.08); border-radius: 999px; padding: 4px; }
+      .sol-tab { padding: 8px 12px; border: 0; background: transparent; border-radius: 999px; cursor: pointer; font-weight: 600; color: #495057; }
+      .sol-tab[aria-selected="true"] { background: #fff; box-shadow: var(--shadow-sm); color: var(--color-secondary); }
+      .solutions-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+      .solution-card { padding: 18px; border-radius: var(--radius-md); border: 1px solid rgba(33,37,41,0.08); box-shadow: var(--shadow-sm); background: #fff; display: grid; gap: 8px; }
+      .solution-card h3 { margin: 0; font-size: 16px; }
+      .solution-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+      .mini { font-size: 11px; padding: 3px 8px; border-radius: 999px; background: rgba(67,97,238,.08); color: var(--color-primary); border: 1px solid rgba(67,97,238,.18); }
+
+      /* Pricing */
+      .pricing { padding: 60px 0; }
+      .billing-toggle { display: inline-flex; background: var(--color-neutral); border: 1px solid rgba(33,37,41,0.08); border-radius: 999px; padding: 4px; gap: 4px; position: relative; }
+      .billing-toggle button { position: relative; z-index: 1; padding: 8px 14px; border-radius: 999px; border: 0; background: transparent; cursor: pointer; }
+      .billing-indicator { position: absolute; top: 4px; bottom: 4px; width: calc(50% - 4px); left: 4px; background: var(--color-white); border-radius: 999px; box-shadow: var(--shadow-sm); transition: left var(--ts); }
+      .billing-toggle[data-mode="annual"] .billing-indicator { left: calc(50% + 0px); }
+      .pricing-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 18px; }
+      .price-card { background: #fff; border: 1px solid rgba(33,37,41,0.08); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 18px; display: grid; gap: 10px; }
+      .price-card.recommended { border-color: rgba(58,12,163,0.3); box-shadow: 0 0 0 3px rgba(58,12,163,0.15), var(--shadow-md); }
+      .price { font-size: 36px; font-weight: 700; line-height: 1; display: inline-flex; align-items: baseline; gap: 4px; }
+      .price small { font-size: 12px; color: #6c757d; }
+      .features-list { display: grid; gap: 8px; }
+      .features-list li { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: start; }
+      .save-badge { margin-left: 8px; }
+      .compare { margin-top: 24px; overflow-x: auto; }
+      table { border-collapse: collapse; width: 100%; min-width: 720px; }
+      th, td { text-align: left; padding: 10px; border-bottom: 1px solid rgba(33,37,41,0.08); }
+      th { font-weight: 600; background: var(--color-neutral); }
+
+      /* Testimonials */
+      .testimonials { padding: 60px 0; background: var(--color-neutral); }
+      .carousel { position: relative; overflow: hidden; border-radius: var(--radius-md); }
+      .slides { display: grid; grid-auto-flow: column; grid-auto-columns: 100%; transition: transform 500ms var(--ease); }
+      .slide { background: #fff; padding: 18px; border: 1px solid rgba(33,37,41,0.08); display: grid; gap: 10px; }
+      .stars { color: #f5c518; letter-spacing: 2px; }
+      .carousel-controls { display: flex; justify-content: space-between; margin-top: 10px; }
+      .dots { display: flex; gap: 6px; justify-content: center; margin-top: 8px; }
+      .dotbtn { width: 8px; height: 8px; border-radius: 50%; background: rgba(33,37,41,0.2); border: 0; }
+      .dotbtn[aria-current="true"] { background: var(--color-primary); }
+      .logo-strip { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 16px; opacity: .85; }
+      .logo { background: #fff; border: 1px solid rgba(33,37,41,0.08); border-radius: 12px; padding: 12px; display: grid; place-items: center; }
+
+      /* FAQ */
+      .faq { padding: 60px 0; }
+      .faq-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .faq-item { border: 1px solid rgba(33,37,41,0.1); border-radius: var(--radius-md); overflow: hidden; background: #fff; }
+      .faq-q { width: 100%; text-align: left; padding: 12px 14px; background: #fff; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; }
+      .faq-a { padding: 0 14px; height: 0; overflow: hidden; transition: height var(--ts); }
+      .faq-item.open .faq-a { padding-bottom: 12px; }
+
+      /* Final CTA */
+      .cta { padding: 60px 0; background: radial-gradient(1200px 300px at 50% 0, rgba(67,97,238,.18), transparent 70%); }
+      .cta .panel { background: #fff; border: 1px solid rgba(33,37,41,0.08); border-radius: var(--radius-lg); padding: 18px; box-shadow: var(--shadow-md); text-align: center; }
+
+      /* Footer */
+      footer { padding: 40px 0 80px; background: #fff; border-top: 1px solid rgba(33,37,41,0.08); position: relative; }
+      .footer-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+      .footer-col h4 { margin: 0 0 8px; font-size: 16px; }
+      .newsletter { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+      .input { padding: 10px 12px; border-radius: 10px; border: 1px solid rgba(33,37,41,0.18); }
+      .watermark { position: fixed; right: 12px; bottom: 12px; opacity: .5; font-size: 12px; background: rgba(248,249,250,.95); padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(33,37,41,0.1); z-index: var(--z-watermark); }
+
+      /* Reveal on scroll */
+      .reveal { opacity: 0; transform: translateY(10px); transition: opacity 600ms var(--ease), transform 600ms var(--ease); }
+      .reveal.visible { opacity: 1; transform: none; }
+
+      /* Hidden watermark */
+      body::before { content: 'impeldown.dev'; position: fixed; right: 4px; bottom: 4px; font: 12px var(--font-mono); color: transparent; pointer-events: none; user-select: none; }
+
+      /* Responsive */
+      @media (min-width: 720px) {
+        nav.primary-nav { display: flex; }
+        .cta-group { display: inline-flex; }
+        .hamburger { display: none; }
+        .hero .container { grid-template-columns: 1.1fr 1fr; }
+        .hero .kfs { grid-template-columns: repeat(2, auto); }
+        .features-grid { grid-template-columns: repeat(2, 1fr); }
+        .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+        .logo-strip { grid-template-columns: repeat(6, 1fr); }
+        .faq-grid { grid-template-columns: repeat(2, 1fr); }
+        .footer-grid { grid-template-columns: repeat(5, 1fr); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { animation: none !important; transition: none !important; }
+      }
+      /* Premium revamp */
+      /* Subtle global grain overlay */
+      body::after {
+        content: "";
+        position: fixed; inset: 0; pointer-events: none; z-index: 1;
+        background-image: radial-gradient(rgba(0,0,0,0.035) 1px, transparent 1px);
+        background-size: 3px 3px; mix-blend-mode: soft-light; opacity: .35;
+      }
+      /* Glassy header and panels */
+      header.site-header {
+        background: rgba(255,255,255,0.6);
+        -webkit-backdrop-filter: blur(14px) saturate(140%);
+        backdrop-filter: blur(14px) saturate(140%);
+        border-bottom: 1px solid rgba(33,37,41,0.06);
+        box-shadow: 0 8px 24px rgba(33,37,41,0.06);
+      }
+      .hero-visual { 
+        background: rgba(255,255,255,0.14);
+        border: 1px solid rgba(255,255,255,0.28);
+        outline: 1px solid rgba(255,255,255,0.14);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+        backdrop-filter: blur(10px) saturate(120%);
+      }
+      /* Aurora background */
+      .hero::before {
+        content: ""; position: absolute; inset: -20% -10% auto -10%; height: 120%; z-index: 0; filter: blur(40px); opacity: .55; pointer-events: none;
+        background: radial-gradient(600px 300px at 20% 30%, rgba(76,201,240,.45), transparent 60%),
+                    radial-gradient(420px 220px at 70% 20%, rgba(58,12,163,.45), transparent 60%),
+                    radial-gradient(520px 260px at 60% 70%, rgba(67,97,238,.45), transparent 60%);
+        animation: aurora 16s ease-in-out infinite alternate;
+      }
+      @keyframes aurora { 
+        0% { transform: translate3d(0,0,0) scale(1); }
+        100% { transform: translate3d(0,-2%,0) scale(1.03); }
+      }
+      /* Greeting style */
+      .greet { margin-top: 8px; font-size: 14px; color: #e9ecef; opacity: .9; }
+      /* Buttons: sheen + ripple */
+      .btn { position: relative; overflow: hidden; }
+      .btn::after { content: ""; position: absolute; inset: -100% auto -100% -30%; width: 40%; transform: rotate(25deg); background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent); transition: transform 600ms var(--ease); }
+      .btn:hover::after { transform: translateX(250%) rotate(25deg); }
+      .ripple { position: absolute; border-radius: 999px; transform: scale(0); background: radial-gradient(circle, rgba(255,255,255,.5) 10%, rgba(255,255,255,.35) 20%, transparent 60%); animation: ripple 600ms var(--ease); pointer-events: none; }
+      @keyframes ripple { to { transform: scale(8); opacity: 0; } }
+      /* Tilt effects */
+      .tilt { transform-style: preserve-3d; transition: transform 300ms var(--ease), box-shadow 300ms var(--ease); }
+      .tilt:hover { box-shadow: var(--shadow-lg); }
+      /* Scroll progress */
+      .scroll-progress { position: absolute; top: 0; left: 0; height: 3px; width: 0; background: linear-gradient(90deg, var(--color-accent), var(--color-primary)); border-radius: 0 2px 2px 0; }
+      /* Card glass accents */
+      .feature-card, .price-card, .slide, .solution-card { background: rgba(255,255,255,.8); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(33,37,41,0.08); }
+      .price-card.recommended { box-shadow: 0 0 0 4px rgba(58,12,163,0.12), var(--shadow-lg); }
+      /* Animated shapes parallax depth */
+      .shape { will-change: transform; }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+      <div class="container nav-wrap">
+        <a href="#home" class="brand" aria-label="NexusFlow Home">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <defs>
+              <linearGradient id="logo-g" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#4361ee" />
+                <stop offset="1" stop-color="#3a0ca3" />
+              </linearGradient>
+            </defs>
+            <rect width="64" height="64" rx="14" fill="url(#logo-g)"/>
+            <path d="M18 40c6-10 12-16 22-22" stroke="#4cc9f0" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="5" fill="white"/>
+          </svg>
+          <span>NexusFlow</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#customers">Customers</a>
+          <a href="#resources">Resources</a>
+        </nav>
+
+        <div class="cta-group">
+          <a class="btn btn-secondary" href="#signin">Sign In</a>
+          <a class="btn btn-primary" href="#get-started">Get Started Free</a>
+        </div>
+
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="mobile-panel" id="mobileMenu" hidden>
+        <div class="grid" role="menu">
+          <a role="menuitem" href="#home">Home</a>
+          <a role="menuitem" href="#features">Features</a>
+          <a role="menuitem" href="#solutions">Solutions</a>
+          <a role="menuitem" href="#pricing">Pricing</a>
+          <a role="menuitem" href="#customers">Customers</a>
+          <a role="menuitem" href="#resources">Resources</a>
+        </div>
+        <div class="cta">
+          <a class="btn btn-secondary" href="#signin">Sign In</a>
+          <a class="btn btn-primary" href="#get-started">Get Started</a>
+        </div>
+      </div>
+      <div class="backdrop" id="backdrop" hidden></div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- Hero -->
+      <section id="home" class="hero">
+        <div class="shape s1"></div>
+        <div class="shape s2"></div>
+        <div class="container">
+          <div class="copy reveal">
+            <span class="eyebrow"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 2l3.1 6.3 7 .9-5 4.9 1.2 7-6.3-3.3L5.8 21l1.2-7-5-4.9 7-.9L12 2z" fill="currentColor" opacity=".9"/></svg> New: Predictive workflows</span>
+            <div class="greet" id="greet"></div>
+            <h1>Work Smarter, Not Harder with <span class="gradient-text">NexusFlow</span> — <span id="typed" class="gradient-text" style="display:inline-block">Automate</span></h1>
+            <p class="sub">AI-powered project management that adapts to your team's workflow and predicts bottlenecks before they happen.</p>
+            <div class="subpoints">
+              <span class="pill"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> 14-day free trial</span>
+              <span class="pill"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M12 1L3 5v6c0 5.25 3.438 10.125 9 12 5.563-1.875 9-6.75 9-12V5l-9-4z" fill="currentColor"/></svg> SOC 2 Type II</span>
+              <span class="pill"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path d="M3 12h18" stroke="currentColor" stroke-width="2"/><path d="M7 8l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg> Setup in 2 minutes</span>
+            </div>
+            <div class="kfs" aria-label="Key features">
+              <span class="kf"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Automated Task Allocation</span>
+              <span class="kf"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Real-time Collaboration</span>
+              <span class="kf"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> Predictive Analytics</span>
+              <span class="kf"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg> 100+ Integrations</span>
+            </div>
+            <div class="actions">
+              <a class="btn btn-primary" href="#get-started">Get Started Free</a>
+              <a class="btn btn-secondary" href="#pricing">See Pricing</a>
+            </div>
+            <div class="stats" role="list" aria-label="Highlights">
+              <div class="stat" role="listitem"><strong>4.9/5</strong><small>500+ verified reviews</small></div>
+              <div class="stat" role="listitem"><strong>2,300+</strong><small>teams onboarded</small></div>
+              <div class="stat" role="listitem"><strong>30%</strong><small>faster delivery</small></div>
+            </div>
+          </div>
+          <div class="hero-visual reveal" aria-label="Animated dashboard mockup">
+            <div class="dashboard">
+              <div class="titlebar">
+                <div class="window-dots"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span></div>
+                <div class="tabs"><span class="tab active">Board</span><span class="tab">Timeline</span><span class="tab">Reports</span></div>
+              </div>
+              <div class="dash-grid">
+                <div class="card">
+                  <div class="chart" role="img" aria-label="Performance chart"></div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+                    <div style="background:#0f1320;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px;color:#cfd6ff">
+                      <div style="font-size:12px;opacity:.8">Velocity</div>
+                      <div class="ring" aria-hidden="true"></div>
+                    </div>
+                    <div style="background:#0f1320;border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px;color:#cfd6ff;display:grid;gap:6px">
+                      <div style="font-size:12px;opacity:.8">Throughput</div>
+                      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:4px;align-items:end;height:80px">
+                        <span style="display:block;height:26px;background:#4cc9f0;border-radius:4px"></span>
+                        <span style="display:block;height:40px;background:#6ea8fe;border-radius:4px"></span>
+                        <span style="display:block;height:52px;background:#b197fc;border-radius:4px"></span>
+                        <span style="display:block;height:34px;background:#4cc9f0;border-radius:4px"></span>
+                        <span style="display:block;height:64px;background:#6ea8fe;border-radius:4px"></span>
+                        <span style="display:block;height:48px;background:#b197fc;border-radius:4px"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card" aria-label="Tasks list">
+                  <div class="list-row"><span class="dot"></span><span>Design homepage</span><span class="badge">High</span></div>
+                  <div class="list-row"><span class="dot" style="background:#6ea8fe"></span><span>API integration</span><span class="badge" style="background:rgba(110,168,254,.15)">Medium</span></div>
+                  <div class="list-row"><span class="dot" style="background:#b197fc"></span><span>User testing</span><span class="badge" style="background:rgba(177,151,252,.15)">Low</span></div>
+                  <div class="list-row"><span class="dot" style="background:#51cf66"></span><span>Launch checklist</span><span class="badge" style="background:rgba(81,207,102,.15)">Ready</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="features">
+        <div class="container">
+          <h2 class="reveal">Built for speed, clarity, and impact</h2>
+          <p class="muted reveal">Automate the busywork and give your team a shared source of truth.</p>
+          <div class="features-grid">
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Intelligent Task Management</h3>
+              <p>Auto-assign tasks with AI and balance workloads across your team.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Team Collaboration Hub</h3>
+              <p>Share updates, comment, and co-edit docs in real time.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20"><path d="M4 16l5-6 4 5 7-10" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+              </div>
+              <h3>Advanced Analytics</h3>
+              <p>Forecast timelines and risks with predictive insights.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Solutions -->
+      <section id="solutions" class="solutions">
+        <div class="container">
+          <h2 class="reveal">Solutions for every team</h2>
+          <p class="muted reveal">Choose your team to see how NexusFlow fits your workflow.</p>
+          <div class="reveal" role="tablist" aria-label="Solutions tabs">
+            <button class="sol-tab" role="tab" aria-selected="true" aria-controls="sol-product" id="tab-product">Product</button>
+            <button class="sol-tab" role="tab" aria-selected="false" aria-controls="sol-engineering" id="tab-engineering">Engineering</button>
+            <button class="sol-tab" role="tab" aria-selected="false" aria-controls="sol-marketing" id="tab-marketing">Marketing</button>
+            <button class="sol-tab" role="tab" aria-selected="false" aria-controls="sol-ops" id="tab-ops">Operations</button>
+          </div>
+          <div id="sol-product" class="solutions-grid reveal" role="tabpanel" aria-labelledby="tab-product">
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>Roadmaps & Prioritization</h3>
+              <p>Plan features, align stakeholders, and track outcomes in one place.</p>
+              <div class="solution-meta"><span class="mini">OKRs</span><span class="mini">Impact/Effort</span><span class="mini">Integrations</span></div>
+            </article>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+              <h3>Launch Management</h3>
+              <p>Coordinate cross-functional launches with automated reminders and checklists.</p>
+              <div class="solution-meta"><span class="mini">Templates</span><span class="mini">Dependencies</span><span class="mini">Calendar</span></div>
+            </article>
+          </div>
+          <div id="sol-engineering" class="solutions-grid reveal" role="tabpanel" aria-labelledby="tab-engineering" hidden>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2l9 5v10l-9 5-9-5V7l9-5z" fill="currentColor" opacity=".5"/></svg></div>
+              <h3>Sprint Planning</h3>
+              <p>Balance capacity, auto-assign tickets, and avoid scope creep.</p>
+              <div class="solution-meta"><span class="mini">Backlog</span><span class="mini">Velocity</span><span class="mini">Estimates</span></div>
+            </article>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M3 12h18" stroke="currentColor" stroke-width="2"/><path d="M7 8l4-4 4 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+              <h3>Release Automation</h3>
+              <p>Connect CI to auto-create release tasks and notify stakeholders.</p>
+              <div class="solution-meta"><span class="mini">CI/CD</span><span class="mini">Changelog</span><span class="mini">Approvals</span></div>
+            </article>
+          </div>
+          <div id="sol-marketing" class="solutions-grid reveal" role="tabpanel" aria-labelledby="tab-marketing" hidden>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M4 10h16" stroke="currentColor" stroke-width="2"/></svg></div>
+              <h3>Campaign Orchestration</h3>
+              <p>Plan multi-channel campaigns, assign owners, and track performance.</p>
+              <div class="solution-meta"><span class="mini">Calendar</span><span class="mini">Assets</span><span class="mini">Attribution</span></div>
+            </article>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 3l9 9-9 9-9-9 9-9z" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+              <h3>Content Pipeline</h3>
+              <p>Brief, draft, review, and publish content faster.</p>
+              <div class="solution-meta"><span class="mini">Workflow</span><span class="mini">Approvals</span><span class="mini">SEO</span></div>
+            </article>
+          </div>
+          <div id="sol-ops" class="solutions-grid reveal" role="tabpanel" aria-labelledby="tab-ops" hidden>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M3 12h18" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+              <h3>Process Automation</h3>
+              <p>Standardize SOPs and trigger automations across teams.</p>
+              <div class="solution-meta"><span class="mini">Templates</span><span class="mini">Rules</span><span class="mini">SLAs</span></div>
+            </article>
+            <article class="solution-card tilt">
+              <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2" fill="none"/><path d="M4 9h16M9 4v16" stroke="currentColor" stroke-width="2"/></svg></div>
+              <h3>Resource Planning</h3>
+              <p>Forecast demand and allocate resources intelligently.</p>
+              <div class="solution-meta"><span class="mini">Utilization</span><span class="mini">Capacity</span><span class="mini">Reports</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="pricing">
+        <div class="container">
+          <div class="reveal" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+            <h2 style="margin:0">Flexible pricing that scales with you</h2>
+            <div class="billing-toggle" id="billingToggle" role="tablist" aria-label="Billing period" data-mode="monthly">
+              <span class="billing-indicator" aria-hidden="true"></span>
+              <button id="monthlyBtn" role="tab" aria-selected="true">Monthly</button>
+              <button id="annualBtn" role="tab" aria-selected="false">Annual <span class="badge save-badge">Save 15% Annually</span></button>
+            </div>
+          </div>
+          <div class="pricing-grid">
+            <article class="price-card reveal" data-plan="starter" aria-label="Starter plan">
+              <h3>Starter</h3>
+              <div class="price"><span class="price-value" data-monthly="19">$19</span><span>/mo</span> <small>billed monthly</small></div>
+              <ul class="features-list">
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Up to 5 team members</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Basic task management</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>5GB storage</li>
+              </ul>
+              <button class="btn btn-primary">Start Free</button>
+            </article>
+            <article class="price-card recommended reveal" data-plan="pro" aria-label="Professional plan recommended">
+              <div style="display:flex;align-items:center;gap:8px">
+                <h3 style="margin:0">Professional</h3>
+                <span class="badge">Recommended</span>
+              </div>
+              <div class="price"><span class="price-value" data-monthly="49">$49</span><span>/mo</span> <small>billed monthly</small></div>
+              <ul class="features-list">
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Up to 20 team members</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Advanced analytics</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>100GB storage</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Priority support</li>
+              </ul>
+              <button class="btn btn-primary">Start Free</button>
+            </article>
+            <article class="price-card reveal" data-plan="enterprise" aria-label="Enterprise plan">
+              <h3>Enterprise</h3>
+              <div class="price"><span class="price-value" data-monthly="99">$99</span><span>/mo</span> <small>billed monthly</small></div>
+              <ul class="features-list">
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Unlimited team members</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Custom workflows</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>1TB storage</li>
+                <li><svg viewBox="0 0 24 24" width="16" height="16"><path d="M5 12l4 4L19 6" stroke="#12b886" stroke-width="2" fill="none" stroke-linecap="round"/></svg>Dedicated account manager</li>
+              </ul>
+              <button class="btn btn-primary">Contact Sales</button>
+            </article>
+          </div>
+
+          <div class="compare reveal">
+            <table aria-label="Feature comparison">
+              <thead>
+                <tr><th>Feature</th><th>Starter</th><th>Professional</th><th>Enterprise</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>AI Task Allocation</td><td>Basic</td><td>Advanced</td><td>Custom</td></tr>
+                <tr><td>Collaboration</td><td>Comments</td><td>Comments + Docs</td><td>Docs + SSO</td></tr>
+                <tr><td>Analytics</td><td>Standard</td><td>Predictive</td><td>Predictive + BI</td></tr>
+                <tr><td>Support</td><td>Email</td><td>Priority</td><td>Dedicated</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="customers" class="testimonials">
+        <div class="container">
+          <h2 class="reveal">Trusted by high-performing teams</h2>
+          <div class="carousel reveal" aria-roledescription="carousel" aria-label="Customer testimonials">
+            <div class="slides" id="slides" aria-live="polite">
+              <article class="slide" role="group" aria-roledescription="slide" aria-label="1 of 3">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <p>“NexusFlow helped us cut delivery time by 30%. The predictive alerts are spot on.”</p>
+                <div style="display:flex;align-items:center;gap:10px">
+                  <svg viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#e9ecef"/><text x="50%" y="55%" text-anchor="middle" font-family="Inter, Arial" font-size="18" fill="#495057">A</text></svg>
+                  <div><strong>Alex Rivera</strong><div class="muted">VP Engineering, Flowspace</div></div>
+                </div>
+              </article>
+              <article class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <p>“Our teams finally have one place to collaborate. Tasks practically assign themselves.”</p>
+                <div style="display:flex;align-items:center;gap:10px">
+                  <svg viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#e9ecef"/><text x="50%" y="55%" text-anchor="middle" font-family="Inter, Arial" font-size="18" fill="#495057">M</text></svg>
+                  <div><strong>Maya Chen</strong><div class="muted">Head of Product, Finchly</div></div>
+                </div>
+              </article>
+              <article class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+                <div class="stars" aria-hidden="true">★★★★★</div>
+                <p>“Setup took minutes. The analytics let us spot risks before they block delivery.”</p>
+                <div style="display:flex;align-items:center;gap:10px">
+                  <svg viewBox="0 0 48 48" width="36" height="36" aria-hidden="true"><circle cx="24" cy="24" r="24" fill="#e9ecef"/><text x="50%" y="55%" text-anchor="middle" font-family="Inter, Arial" font-size="18" fill="#495057">R</text></svg>
+                  <div><strong>Rohit Patel</strong><div class="muted">CTO, BrightLayer</div></div>
+                </div>
+              </article>
+            </div>
+            <div class="carousel-controls" aria-controls="slides">
+              <button class="btn btn-secondary" id="prevBtn" aria-label="Previous testimonial">Prev</button>
+              <button class="btn btn-secondary" id="nextBtn" aria-label="Next testimonial">Next</button>
+            </div>
+            <div class="dots" role="tablist" aria-label="Slides">
+              <button class="dotbtn" data-index="0" aria-label="Slide 1" aria-current="true"></button>
+              <button class="dotbtn" data-index="1" aria-label="Slide 2"></button>
+              <button class="dotbtn" data-index="2" aria-label="Slide 3"></button>
+            </div>
+          </div>
+
+          <div class="logo-strip reveal" aria-label="Customer logos">
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+            <div class="logo"><svg viewBox="0 0 100 24" width="100" height="24"><rect width="100" height="24" rx="6" fill="#e9ecef"/></svg></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ / Resources -->
+      <section id="resources" class="faq">
+        <div class="container">
+          <h2 class="reveal">Frequently asked questions</h2>
+          <div class="faq-grid">
+            <div class="faq-item reveal" data-category="General">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq1">What is NexusFlow?</button>
+              <div id="faq1" class="faq-a" role="region" aria-labelledby="faq1">NexusFlow is an AI-powered project management platform that automates task allocation, optimizes collaboration, and delivers predictive insights.</div>
+            </div>
+            <div class="faq-item reveal" data-category="Billing">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq2">Do you offer annual billing?</button>
+              <div id="faq2" class="faq-a" role="region" aria-labelledby="faq2">Yes. Toggle Annual to save 15% with yearly billing. You can switch plans anytime.</div>
+            </div>
+            <div class="faq-item reveal" data-category="Technical">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq3">Do you have integrations?</button>
+              <div id="faq3" class="faq-a" role="region" aria-labelledby="faq3">We support 100+ integrations including Slack, GitHub, Google Drive, and more.</div>
+            </div>
+            <div class="faq-item reveal" data-category="Security">
+              <button class="faq-q" aria-expanded="false" aria-controls="faq4">How do you handle security?</button>
+              <div id="faq4" class="faq-a" role="region" aria-labelledby="faq4">We follow industry best practices with encryption in transit and at rest, SSO, and role-based access control.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="cta" id="get-started">
+        <div class="container">
+          <div class="panel reveal">
+            <h2>Ready to transform your workflow?</h2>
+            <p class="muted">Join thousands of teams accelerating delivery with NexusFlow.</p>
+            <a class="btn btn-primary" href="#signup">Get Started Free</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer role="contentinfo">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <div class="brand" style="margin-bottom:6px">
+            <svg viewBox="0 0 64 64" aria-hidden="true" width="20" height="20">
+              <defs>
+                <linearGradient id="logo-g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4361ee"/><stop offset="1" stop-color="#3a0ca3"/></linearGradient>
+              </defs>
+              <rect width="64" height="64" rx="14" fill="url(#logo-g2)"/>
+              <path d="M18 40c6-10 12-16 22-22" stroke="#4cc9f0" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="5" fill="white"/>
+            </svg>
+            <span>NexusFlow</span>
+          </div>
+          <p class="muted">AI-powered project management for modern teams.</p>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="icon" aria-label="Twitter" href="#"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 5c-.7.3-1.4.5-2.1.6.8-.5 1.3-1.1 1.6-2-1 .6-1.9.9-2.9 1.1A3.5 3.5 0 0012 7.5c0 .3 0 .6.1.9-3-.1-5.7-1.6-7.5-3.9-.3.6-.4 1.2-.4 1.9 0 1.3.7 2.5 1.8 3.2-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.4 3.4 3.2 3.8-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.6 2 2.7 3.7 2.7A7 7 0 013 18.6 9.8 9.8 0 008.3 20c6 0 9.3-5 9.3-9.3v-.4c.7-.4 1.3-1 1.8-1.7z" fill="currentColor"/></svg></a>
+            <a class="icon" aria-label="GitHub" href="#"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 .5C5.7.5.9 5.3.9 11.6c0 4.9 3.2 9 7.6 10.5.6.1.8-.3.8-.6v-2.2c-3.1.7-3.8-1.4-3.8-1.4-.6-1.5-1.4-1.9-1.4-1.9-1.2-.8.1-.8.1-.8 1.3.1 2 .1 2.9 1.4 1.2 2 3.2 1.4 4 .9.1-.9.5-1.4.8-1.7-2.5-.3-5.1-1.3-5.1-5.9 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.2 1.2a10.6 10.6 0 015.8 0c2.3-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.9.1 3.2.8.9 1.2 1.9 1.2 3.2 0 4.6-2.6 5.6-5.1 5.9.5.4.9 1.1.9 2.3v3.4c0 .3.2.7.8.6 4.5-1.5 7.6-5.6 7.6-10.5C23.1 5.3 18.3.5 12 .5z" fill="currentColor"/></svg></a>
+            <a class="icon" aria-label="LinkedIn" href="#"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1s2.48 1.1 2.48 2.5zM.5 8h4v12h-4V8zm7.5 0h3.8v1.6h.1c.5-.9 1.8-1.9 3.7-1.9 3.9 0 4.6 2.6 4.6 6v6.3h-4v-5.6c0-1.3 0-2.9-1.8-2.9s-2.2 1.4-2.2 2.8v5.7h-4V8z" fill="currentColor"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <div><a href="#features">Features</a></div>
+          <div><a href="#pricing">Pricing</a></div>
+          <div><a href="#customers">Customers</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <div><a href="#resources">Help Center</a></div>
+          <div><a href="#resources">API Docs</a></div>
+          <div><a href="#resources">Guides</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <div><a href="#">About</a></div>
+          <div><a href="#">Careers</a></div>
+          <div><a href="#">Contact</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <div><a href="#">Privacy</a></div>
+          <div><a href="#">Terms</a></div>
+          <div><a href="#">Security</a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Newsletter</h4>
+          <form id="newsletterForm" class="newsletter" novalidate>
+            <input id="email" class="input" type="email" name="email" placeholder="you@company.com" aria-label="Email address" required>
+            <button id="subscribeBtn" class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+          <div id="newsletterMsg" class="muted" role="status" aria-live="polite" style="min-height:22px;margin-top:6px"></div>
+        </div>
+      </div>
+      <div class="container" style="margin-top:16px">
+        <small class="muted">© <span id="year"></span> NexusFlow. All rights reserved.</small>
+      </div>
+      <div class="watermark">Made by Byte&Berry</div>
+    </footer>
+
+    <script>
+      // Hidden watermark (console)
+      console.log('impeldown.dev');
+
+      // Mobile menu with a11y and backdrop
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const backdrop = document.getElementById('backdrop');
+      let lastFocus = null;
+
+      function openMenu() {
+        lastFocus = document.activeElement;
+        mobileMenu.hidden = false; backdrop.hidden = false;
+        requestAnimationFrame(() => {
+          mobileMenu.classList.add('open'); backdrop.classList.add('open');
+          menuBtn.setAttribute('aria-expanded', 'true');
+          mobileMenu.querySelector('a,button')?.focus();
+        });
+      }
+      function closeMenu() {
+        mobileMenu.classList.remove('open'); backdrop.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        setTimeout(() => { mobileMenu.hidden = true; backdrop.hidden = true; lastFocus?.focus(); }, 200);
+      }
+      menuBtn.addEventListener('click', () => {
+        if (mobileMenu.hidden) openMenu(); else closeMenu();
+      });
+      backdrop.addEventListener('click', closeMenu);
+      window.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mobileMenu.hidden) closeMenu(); });
+      // Trap focus in mobile menu when open
+      document.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab' || mobileMenu.hidden) return;
+        const focusables = mobileMenu.querySelectorAll('a, button');
+        const first = focusables[0]; const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      // Intersection Observer reveal
+      const io = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px' }) : null;
+      document.querySelectorAll('.reveal').forEach(el => { if (io) io.observe(el); else el.classList.add('visible'); });
+
+      // Pricing toggle with 15% annual discount
+      const BILLING_KEY = 'nexusflow_billing';
+      const billingToggle = document.getElementById('billingToggle');
+      const monthlyBtn = document.getElementById('monthlyBtn');
+      const annualBtn = document.getElementById('annualBtn');
+      function animateNumber(el, start, end, duration = 400) {
+        const startTime = performance.now();
+        function tick(now) {
+          const p = Math.min((now - startTime) / duration, 1);
+          const val = (start + (end - start) * p);
+          el.textContent = '$' + (Math.round(val * 100) / 100).toString();
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      }
+      function setBillingMode(mode) {
+        billingToggle.dataset.mode = mode;
+        const annual = mode === 'annual';
+        monthlyBtn.setAttribute('aria-selected', (!annual).toString());
+        annualBtn.setAttribute('aria-selected', (annual).toString());
+        document.querySelectorAll('.price-card .price').forEach(priceEl => {
+          const valEl = priceEl.querySelector('.price-value');
+          const base = Number(valEl.getAttribute('data-monthly')) || 0;
+          const target = annual ? Math.round((base * 0.85) * 100) / 100 : base;
+          const current = Number((valEl.textContent || '').replace(/[^0-9.]/g, '')) || base;
+          animateNumber(valEl, current, target, 500);
+          const small = priceEl.querySelector('small');
+          small.textContent = annual ? 'billed annually' : 'billed monthly';
+        });
+        try { localStorage.setItem(BILLING_KEY, mode); } catch {}
+      }
+      monthlyBtn.addEventListener('click', () => setBillingMode('monthly'));
+      annualBtn.addEventListener('click', () => setBillingMode('annual'));
+      setBillingMode(localStorage.getItem(BILLING_KEY) || 'monthly');
+
+      // Testimonials carousel
+      const slides = document.getElementById('slides');
+      const dots = Array.from(document.querySelectorAll('.dotbtn'));
+      let idx = 0, timer = null; const total = dots.length;
+      function go(i) {
+        idx = (i + total) % total;
+        slides.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, j) => d.setAttribute('aria-current', (j === idx).toString()));
+      }
+      function startAuto() { stopAuto(); timer = setInterval(() => go(idx + 1), 6000); }
+      function stopAuto() { if (timer) clearInterval(timer); timer = null; }
+      document.getElementById('prevBtn').addEventListener('click', () => { go(idx - 1); startAuto(); });
+      document.getElementById('nextBtn').addEventListener('click', () => { go(idx + 1); startAuto(); });
+      dots.forEach((d) => d.addEventListener('click', () => { go(Number(d.dataset.index)); startAuto(); }));
+      slides.addEventListener('mouseenter', stopAuto); slides.addEventListener('mouseleave', startAuto);
+      startAuto();
+
+      // FAQ accordion
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const btn = item.querySelector('.faq-q');
+        const ans = item.querySelector('.faq-a');
+        const setHeight = (h) => { ans.style.height = h + 'px'; };
+        btn.addEventListener('click', () => {
+          const open = item.classList.contains('open');
+          // close others on small screens
+          if (window.matchMedia('(max-width: 719px)').matches) {
+            document.querySelectorAll('.faq-item.open').forEach(o => { if (o !== item) { o.classList.remove('open'); const a=o.querySelector('.faq-a'); a.style.height = '0px'; o.querySelector('.faq-q').setAttribute('aria-expanded','false'); } });
+          }
+          item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', (!open).toString());
+          if (!open) { setHeight(ans.scrollHeight); } else { setHeight(0); }
+        });
+        ans.addEventListener('transitionend', () => { if (item.classList.contains('open')) ans.style.height = 'auto'; });
+      });
+
+      // Newsletter form (fake async)
+      const form = document.getElementById('newsletterForm');
+      const email = document.getElementById('email');
+      const subBtn = document.getElementById('subscribeBtn');
+      const msg = document.getElementById('newsletterMsg');
+      function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        msg.textContent = '';
+        if (!validateEmail(email.value)) { msg.textContent = 'Please enter a valid email.'; email.focus(); return; }
+        subBtn.disabled = true; subBtn.textContent = 'Subscribing…';
+        await new Promise(r => setTimeout(r, 1000));
+        const ok = Math.random() > 0.05; // 95% success
+        if (ok) { msg.textContent = 'Thanks! Check your inbox to confirm.'; form.reset(); }
+        else { msg.textContent = 'Something went wrong. Please try again.'; }
+        subBtn.disabled = false; subBtn.textContent = 'Subscribe';
+      });
+
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Personalized greeting
+      (function greet() {
+        const h = new Date().getHours();
+        const msg = h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+        const el = document.getElementById('greet');
+        if (el) el.textContent = msg + ', welcome to your new flow.';
+      })();
+
+      // Scroll progress
+      const sp = document.getElementById('scrollProgress');
+      function onScroll() {
+        const st = window.scrollY; const sh = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = Math.max(0, Math.min(1, st / (sh || 1)));
+        sp.style.width = (pct * 100) + '%';
+      }
+      window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+      // Button ripple
+      document.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn'); if (!btn) return;
+        const r = document.createElement('span'); r.className = 'ripple';
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.2; r.style.width = r.style.height = size + 'px';
+        r.style.left = (e.clientX - rect.left - size/2) + 'px'; r.style.top = (e.clientY - rect.top - size/2) + 'px';
+        btn.appendChild(r); setTimeout(() => r.remove(), 650);
+      });
+
+      // Tilt effect for cards
+      const tiltEls = Array.from(document.querySelectorAll('.feature-card, .price-card, .slide'));
+      tiltEls.forEach(el => el.classList.add('tilt'));
+      const boundsMap = new WeakMap();
+      function handleTilt(e) {
+        const el = e.currentTarget; let b = boundsMap.get(el); if (!b) { b = el.getBoundingClientRect(); boundsMap.set(el, b); }
+        const x = (e.clientX - b.left) / b.width; const y = (e.clientY - b.top) / b.height;
+        const rx = (0.5 - y) * 8; const ry = (x - 0.5) * 12;
+        el.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+      }
+      function resetTilt(e) { e.currentTarget.style.transform = ''; }
+      tiltEls.forEach(el => { el.addEventListener('mousemove', handleTilt); el.addEventListener('mouseleave', resetTilt); });
+
+      // Parallax shapes in hero
+      const hero = document.querySelector('.hero');
+      const s1 = document.querySelector('.shape.s1'); const s2 = document.querySelector('.shape.s2');
+      function parallax(e) {
+        const rect = hero.getBoundingClientRect();
+        const cx = rect.left + rect.width/2; const cy = rect.top + rect.height/2;
+        const dx = (e.clientX - cx) / rect.width; const dy = (e.clientY - cy) / rect.height;
+        if (s1) s1.style.transform = `translate(${dx * 20}px, ${dy * 20}px)`;
+        if (s2) s2.style.transform = `translate(${dx * -16}px, ${dy * -16}px)`;
+      }
+      hero.addEventListener('mousemove', parallax);
+
+      // Solutions tabs
+      (function solutionsTabs(){
+        const tabs = Array.from(document.querySelectorAll('.sol-tab'));
+        if (!tabs.length) return;
+        const panels = {
+          product: document.getElementById('sol-product'),
+          engineering: document.getElementById('sol-engineering'),
+          marketing: document.getElementById('sol-marketing'),
+          ops: document.getElementById('sol-ops')
+        };
+        function show(key){
+          tabs.forEach(t => t.setAttribute('aria-selected', (t.id === 'tab-' + key).toString()));
+          Object.entries(panels).forEach(([k,el]) => { if (!el) return; el.hidden = (k !== key); });
+        }
+        tabs.forEach(t => t.addEventListener('click', () => show(t.id.replace('tab-',''))));
+        tabs.forEach((t,i) => t.addEventListener('keydown', (e) => {
+          if (!['ArrowLeft','ArrowRight'].includes(e.key)) return; e.preventDefault();
+          const ni = (i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; tabs[ni].focus(); tabs[ni].click();
+        }));
+      })();
+
+      // Typed rotating word in hero
+      (function typedWords(){
+        const el = document.getElementById('typed'); if (!el) return;
+        const words = ['Automate','Collaborate','Predict'];
+        let i = 0;
+        setInterval(() => {
+          i = (i + 1) % words.length;
+          el.style.opacity = '0';
+          setTimeout(() => { el.textContent = words[i]; el.style.opacity = '1'; }, 160);
+        }, 2200);
+      })();
+    </script>
+  </body>
+</html>
+
+
